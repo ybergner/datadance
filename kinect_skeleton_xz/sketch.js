@@ -36,10 +36,10 @@ let mode;
 let pos, ppos;
 
 function setup() {
-  createCanvas(500, 500);
+  createCanvas(800, 800);
 
   // Define and create an instance of kinectron
-  kinectron = new Kinectron("128.122.34.133");
+  kinectron = new Kinectron("10.17.46.69");
 
   // Connect with application over peer
   kinectron.makeConnection();
@@ -51,7 +51,7 @@ function setup() {
   mode = 0;
 
   // Start drawing with left hand
-  j = kinectron.HEAD;
+  j = kinectron.NECK;
 
   // Draw white background
   background(0);
@@ -74,18 +74,18 @@ function bodyTracked(body) {
     let speed = dist(ppos.x, ppos.y, ppos.z, pos.x, pos.y, pos.z);
     let sw = 1;
 
-    // 3 ways to set strokeweight according to speed.
-    switch (mode) {
-      case 1:
-        sw = speed / 10;
-        break;
-      case 2:
-        sw = speed / 2;
-        break;
-      case 3:
-        sw = map(speed, 0, 200, 10, 0);
-        break;
-    }
+    // // 3 ways to set strokeweight according to speed.
+    // switch (mode) {
+    //   case 1:
+    //     sw = speed / 10;
+    //     break;
+    //   case 2:
+    //     sw = speed / 10;
+    //     break;
+    //   case 3:
+    //     sw = map(speed, 0, 200, 10, 0);
+    //     break;
+    // }
 
     // Draw the line
     stroke(255);
@@ -110,7 +110,7 @@ function drawJoint(joint) {
   let pos = scaleJoint(joint);
   noStroke();
   fill(255);
-  ellipse(pos.x, pos.y, 10, 10);
+  ellipse(pos.x, pos.z, 10, 10);
 }
 
 function keyPressed() {
@@ -141,11 +141,11 @@ function keyPressed() {
 // 3. Return it as an object literal
 function scaleJoint(joint) {
   return {
-    // x: (joint.cameraX * width / 2) + width / 2,
+    x: (joint.cameraX * width / 2) + width / 2,
     // y: (-joint.cameraY * width / 2) + height / 2,
     // z: (joint.cameraZ * height / 2) + height / 2,
-    x: (joint.cameraX +1) * 250,
+    // x: (joint.cameraX +1) * 250,
     y: joint.cameraY * 100,
-    z: joint.cameraZ * 250
+    z: joint.cameraZ * 100 - 100
   }
 }

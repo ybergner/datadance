@@ -356,7 +356,8 @@
     parse();
   };
 
-  var SuperGif = function(opts) {
+  var
+   = function(opts) {
     var options = {
       //viewport position
       vp_l: 0,

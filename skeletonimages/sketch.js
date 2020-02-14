@@ -23,7 +23,6 @@ let debugRotations = false;
 // we put as example here "127.0.0.1"
 // replace it with the kinectron server ip address
 // remember to keep the double quotes
-const kinectronServerIPAddress = "192.168.1.200";
 
 const skelWidth = 230;
 const skelHeight = 250;
@@ -38,7 +37,8 @@ let legLeftImg;
 let legRightImg;
 
 // recorded data variables
-const recorded_data_file = "../shared/recorded_skeleton.json";
+const recorded_data_file = "../recordings/recorded_skeleton.json";
+// const recorded_data_file = "../recordings/dd_recording1.json";
 // initialize time variables
 let sentTime = Date.now();
 let currentFrame = 0;
@@ -127,13 +127,10 @@ function loopRecordedData() {
 function initKinectron() {
   // define and create an instance of kinectron
   const kinectron = new Kinectron(kinectronServerIPAddress);
-
   // connect with application over peer
   kinectron.makeConnection();
-
   // Set Kinect type to "windows" or "azure"
   kinectron.setKinectType("windows");
-
   // request all tracked bodies and pass data to your callback
   kinectron.startTrackedBodies(bodyTracked);
 }

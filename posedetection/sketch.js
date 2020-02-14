@@ -38,7 +38,7 @@ function connectKinect() {
     var address = {
         // var IPaddy = select('#IP').value()
         // console.log(IPaddy)
-        host: '128.122.34.133',
+        host: '10.17.46.69',
         port: 9001,
         path: '/'
     };

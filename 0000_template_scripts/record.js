@@ -10,7 +10,7 @@ function setup() {
   background(255);
 
   // Define and create an instance of kinectron
-  var kinectronIpAddress = "192.168.1.200"; // FILL IN YOUR KINECTRON IP ADDRESS HERE
+//  var kinectronIpAddress = "192.168.1.200"; // FILL IN YOUR KINECTRON IP ADDRESS HERE
   kinectron = new Kinectron(kinectronIpAddress);
 
   // Connect with application over peer

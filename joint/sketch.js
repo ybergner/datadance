@@ -1,14 +1,3 @@
-// Copyright (c) 2019 Kinectron
-//
-// This software is released under the MIT License.
-// https://opensource.org/licenses/MIT
-
-/* ===
-Kinectron Example
-Kinect Windows multiplayer joint example using p5.js
-=== */
-//
-
 // Declare Kinectron
 let kinectron = null;
 
@@ -16,23 +5,20 @@ let kinectron = null;
 let handColors = {};
 let hands = {};
 
-let ballWidth = 50;
+let ballWidth = 20;
 
 function setup() {
-  createCanvas(512, 424);
+  createCanvas(640, 480);
   background(0);
   noStroke();
 
   // Define and create an instance of kinectron
-  let kinectronIpAddress = ""; // FILL IN YOUR KINECTRON IP ADDRESS HERE
+//  let kinectronIpAddress = ""; // FILL IN YOUR KINECTRON IP ADDRESS HERE
   kinectron = new Kinectron(kinectronIpAddress);
-
   // Set kinect type to windows
   kinectron.setKinectType("windows");
-
   // Connect with application over peer
   kinectron.makeConnection();
-
   // Request right hand and set callback for received hand
   kinectron.startTrackedJoint(kinectron.HANDRIGHT, drawRightHand);
 }
@@ -72,7 +58,7 @@ function drawRightHand(hand) {
     // draw label with tracking id to player's hand location
     text(
       `
-        Right hand of player
+        Right hand of body
         with tracking Id:
         ` + trackedHand.trackingId,
       trackedHand.depthX * width - ballWidth * 3,
